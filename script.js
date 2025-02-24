@@ -7,6 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
         body.classList.toggle('dark-mode');
         localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
     });
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+    
+        // Toggle menu on click
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    });
+    
 
     // Check for saved theme preference
     const savedTheme = localStorage.getItem('theme');
