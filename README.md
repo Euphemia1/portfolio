@@ -28,4 +28,11 @@ Contact form or email integration (optional)
 🌐 Live Demo
 Check out the live version here: https://girl-developer.netlify.app/
 
+📬 Contact
+Feel free to reach out!
 
+Email: euphemiachikungulu347@gmail.com
+
+LinkedIn:https://www.linkedin.com/in/euphemia-chikungulu-a37745349/
+
+GitHub: github.com/Euphemia1
