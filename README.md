@@ -23,3 +23,9 @@ Project showcase with live demos and source links
 About Me section with bio and skills
 
 Contact form or email integration (optional)
+
+
+🌐 Live Demo
+Check out the live version here: https://girl-developer.netlify.app/
+
+
