@@ -4,3 +4,14 @@ Welcome to my personal portfolio! This repository contains the source code for m
 
 🚀 About Me
 I'm a passionate software engineer focused on building impactful, scalable, and user-centric applications. With a strong foundation in modern web technologies and a curiosity-driven mindset, I love solving problems and bringing ideas to life through code.
+
+🛠️ Tech Stack
+Frontend: HTML, CSS, JavaScript, React (or any framework you're using)
+
+Styling: Tailwind CSS, SCSS, or plain CSS
+
+Backend: Node.js, Express (if applicable)
+
+Other: Git, GitHub, VS Code
+
+
