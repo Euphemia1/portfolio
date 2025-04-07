@@ -15,3 +15,11 @@ Backend: Node.js, Express (if applicable)
 Other: Git, GitHub, VS Code
 
 
+📁 Features
+Responsive, mobile-first design
+
+Project showcase with live demos and source links
+
+About Me section with bio and skills
+
+Contact form or email integration (optional)
