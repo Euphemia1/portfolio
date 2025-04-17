@@ -23,7 +23,7 @@
     --card-background: #1a013a;
     --header-background: rgba(39, 0, 93, 0.95);
     --bg-color: #27005D;
-    --text-color: #E4F1FF;
+    --text-color: #fff;
     --text-muted: #AED2FF;
     --primary-rgb: 148, 0, 255;
     --card-bg: #1a013a;
@@ -230,19 +230,20 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 2.5rem;
   background: var(--accent-color);
-  border-radius: 2rem;
+  border-radius: 1.25rem;
   box-shadow: 0 4px 32px rgba(148,0,255,0.08);
-  padding: 3rem 2rem;
+  padding: 2.5rem 2rem;
   margin-top: 2rem;
-  max-width: 1100px;
+  max-width: 700px;
+  min-width: 320px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .enhanced-about .about-image {
-  flex: 0 0 260px;
+  flex: 0 0 180px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -250,10 +251,10 @@ h2 {
   border-radius: 50%;
   box-shadow: 0 8px 32px rgba(148,0,255,0.12);
   border: 4px solid var(--primary-color);
-  min-width: 260px;
-  min-height: 260px;
-  max-width: 260px;
-  max-height: 260px;
+  min-width: 180px;
+  min-height: 180px;
+  max-width: 180px;
+  max-height: 180px;
   overflow: hidden;
 }
 
@@ -268,8 +269,26 @@ h2 {
 
 .enhanced-about .about-text {
   flex: 1 1 0;
-  padding-left: 1.5rem;
+  padding-left: 1.25rem;
   color: var(--text-color);
+}
+
+.enhanced-about .about-text p,
+.enhanced-about .about-text h3,
+.enhanced-about .about-text span {
+  color: var(--text-color) !important;
+}
+
+@media (max-width: 900px) {
+  .enhanced-about {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem 0.5rem;
+    max-width: 98vw;
+  }
+  .enhanced-about .about-text {
+    padding-left: 0;
+  }
 }
 
 #about .container {
