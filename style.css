@@ -212,6 +212,59 @@ h2 {
     box-shadow: 0 8px 24px rgba(160,132,202,0.15);
 }
 
+.enhanced-about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  background: linear-gradient(120deg, #fff 60%, #f7e6ff 100%);
+  border-radius: 2rem;
+  box-shadow: 0 4px 32px rgba(160,132,202,0.10);
+  padding: 3rem 2rem;
+  margin-top: 2rem;
+}
+
+.enhanced-about .about-image {
+  flex: 0 0 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f7e6ff 0%, #ffe5ec 100%);
+  border-radius: 50%;
+  box-shadow: 0 8px 32px rgba(75,56,105,0.18);
+  border: 4px solid #E9C5D1;
+  min-width: 260px;
+  min-height: 260px;
+  max-width: 260px;
+  max-height: 260px;
+  overflow: hidden;
+}
+
+.enhanced-about .about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: none;
+  box-shadow: none;
+}
+
+.enhanced-about .about-text {
+  flex: 1 1 0;
+  padding-left: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .enhanced-about {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 1rem;
+  }
+  .enhanced-about .about-text {
+    padding-left: 0;
+  }
+}
+
 /* Fixed About Section Styles */
 #about .container {
     max-width: 1200px;
