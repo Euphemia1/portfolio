@@ -1,395 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Euphemia Chikungulu | Portfolio</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>Euphemia Chikungulu - Front-End Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="counter">0</div>
-    </div>
-
-    <!-- Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-
-    <!-- Header -->
-    <header id="home">
-        <div class="container-fluid">
-            <div class="row min-vh-100 align-items-center">
-                <div class="col-md-8 mx-auto text-center">
-                    <h1 class="display-1 fw-bold text-white" data-aos="fade-up">EUPHEMIA</h1>
-                    <div class="intro-text" data-aos="fade-up" data-aos-delay="300">
-                        <p class="text-white">Software Developer | Web Designer | UI/UX Designer</p>
-                    </div>
-                    <div class="scroll-down" data-aos="fade-up" data-aos-delay="600">
-                        <a href="#about" class="text-white">
-                            <i class="fas fa-chevron-down"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#home">EC</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+    <header id="header">
+        <nav>
+            <button class="hamburger" id="hamburger" type="button" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle">Toggle Theme</button>
+    </header>
+    
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Euphemia Chikungulu</h1>
+                    <h2 style="font-family: 'Poppins', sans-serif; font-weight: 600;">Front-End Developer & Innovator</h2>
+                    <p style="font-family: 'Lato', sans-serif; font-size: 1.2rem; color: #4B3869;">Empowering experiences through code. Passionate about elegant, user-focused web solutions.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Euphemia1" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/euphemia-chikungulu-a37745349?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:euphemiachikungulu347@gmail.com" aria-label="Email Contact"><i class="fas fa-envelope"></i></a>
+                    </div>
+                    <button class="cta-button">Learn More</button>
+                </div>
+                <!-- <div class="hero-image">
+                    <img src="./images/Euphemia.jpg" alt="Euphemia Chikungulu">
+                </div>
+            </div>
+        </section> -->
+
+        <!-- About Me Section -->
+
+<section id="about">
+    <div class="container">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="./images/Euphemia.jpg" alt="Euphemia Chikungulu">
+                <a href="/Euphemia-Chikungulu-CV.pdf" download class="download-cv-button">
+                    <i class="fas fa-download"></i> Download CV
+                </a>
+            </div>
+            <div class="about-text">
+                <p>As a passionate Front-End Developer, I specialize in creating engaging and responsive web interfaces with a keen eye for design and detail.</p>
+                <p>My expertise extends to modern front-end frameworks and responsive design techniques. I'm committed to writing clean, efficient code and delivering innovative solutions for my clients.</p>
+                
+                <div class="skills-overview">
+                    <div class="skill-card">
+                        <i class="fas fa-code"></i>
+                        <h3>Front-End</h3>
+                        <p>HTML, CSS, JavaScript</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-server"></i>
+                        <h3>Back-End</h3>
+                        <p>PHP, MySQL</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>UI/UX Design</h3>
+                        <p>Figma, Adobe XD</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <h3>Performance</h3>
+                        <p>Web Optimization</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
+    </div>
+</section>
 
-    <!-- About Section -->
-    <section id="about" class="section-padding">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6" data-aos="fade-right">
-                    <img src="images/profile.jpg" alt="Euphemia Chikungulu" class="img-fluid rounded-3 shadow">
-                </div>
-                <div class="col-md-6" data-aos="fade-left">
-                    <div class="section-title">
-                        <h2>About Me</h2>
+<!-- Experience Section -->
+        <section id="experience">
+            <div class="container">
+                <h2>Professional Experience</h2>
+                <div class="experience-timeline">
+                    <div class="experience-item">
+                        <h3>software-developer</h3>
+                        <p class="company">Nyamula Logistics</p>
+                        <p class="period">2024-Current</p>
+                        <ul>
+                            <li>At Nyamula, I am responsible for designing and developing the
+                                company website while integrating it with WhatsApp and various
+                                payment gateways.</li>
+                        </ul>
                     </div>
-                    <p class="lead">Hello! I'm Euphemia Chikungulu, a passionate Software Developer and UI/UX Designer based in Malawi.</p>
-                    <p>I specialize in creating beautiful, functional, and user-friendly websites and applications. With a strong foundation in both front-end and back-end development, I strive to build digital experiences that are not only visually appealing but also highly functional.</p>
-                    <p>My journey in tech began with a deep curiosity about how digital products work and how they can solve real-world problems. This curiosity has evolved into a career where I continuously learn and adapt to new technologies and methodologies.</p>
-                    <div class="mt-4">
-                        <a href="#contact" class="btn btn-primary me-2">Get In Touch</a>
-                        <a href="#" class="btn btn-outline-light">Download CV</a>
+
+                    <div class="experience-item">
+                        <h3>Front-End Developer</h3>
+                        <p class="company">Dawa Health.</p>
+                        <p class="period">2023- 2024</p>
+                        <ul>
+                           <li>In my role at Dawa Health, I was involved in the design of a chatbot
+                            system aimed at enhancing patient communication and support.
+                            Although the project remained incomplete, I contributed to the
+                            foundational aspects of the chatbot, focusing on user needs and
+                            functionality to ensure it would effectively serve its intended purpose.</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <h3> Web Developer</h3>
+                        <p class="company">TechIQ CodeIT</p>
+                        <p class="period">2022 - 2023</p>
+                        <ul>
+                            <li>Assisted in the development of client websites using HTML, CSS, and JavaScript</li>
+                            <li>Learned and applied PHP programming for server-side functionality</li>
+                            <li>Gained experience with MySQL database design and queries</li>
+                            <li>Collaborated with designers to implement pixel-perfect, responsive layouts</li>
+                            <li>Participated in client meetings and contributed to project planning</li>
+                        </ul>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h2>Skills & Expertise</h2>
+                <div class="skills-grid">
+                    <!-- Skills will be dynamically populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h2>My Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Responsive Web Design</h3>
+                        <p>Creating beautiful, responsive websites that work seamlessly across all devices and screen sizes.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-code"></i>
+                        <h3>Front-End Development</h3>
+                        <p>Building interactive and dynamic user interfaces using HTML, CSS, and JavaScript.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-database"></i>
+                        <h3>PHP Development</h3>
+                        <p>Developing robust server-side applications and integrating with MySQL databases.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Web Application Development</h3>
+                        <p>Creating full-stack web applications with a focus on user experience and performance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- Education Section -->
+        <section id="education">
+            <div class="container">
+                <h2>Education</h2>
+                <div class="education-card">
+                    <h3>Bachelor's Degree in Software Engineering</h3>
+                    <p class="institution">Zambia Univerisity Of Technology</p>
+                    <p class="period">2021 – 2024</p>
+                    <ul>
+                    
+                        <li>Specialized in Web Development and Database Management</li>
+                        <li>Completed capstone project on 'Interactive Web Application with PHP and MySQL'</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+<!--    Updated Projects Section with Real Projects -->
+<section id="projects">
+    <div class="container">
+        <h2>My Projects</h2>
+        <p class="section-description">Here are some of the projects I've worked on that showcase my skills and expertise.</p>
+        
+        <div class="projects-filter">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="web">Web Development</button>
+            <button class="filter-btn" data-filter="frontend">Frontend</button>
+            <button class="filter-btn" data-filter="backend">Backend</button>
         </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section-padding bg-light">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 text-center" data-aos="fade-up">
-                    <div class="section-title">
-                        <h2>My Skills</h2>
-                        <p>Here are some of the technologies and tools I work with</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-html5"></i>
-                        </div>
-                        <h4>HTML5</h4>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">95%</div>
+        
+        <div class="projects-grid">
+            <div class="project-card" data-category="web frontend">
+                <div class="project-img">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Yvonne Chanda Portfolio">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://yvonne-chanda.netlify.app/" target="_blank" class="project-link"><i class="fas fa-link"></i></a>
+                            <a href="#" class="project-github"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-css3-alt"></i>
-                        </div>
-                        <h4>CSS3</h4>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-js"></i>
-                        </div>
-                        <h4>JavaScript</h4>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-react"></i>
-                        </div>
-                        <h4>React</h4>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-php"></i>
-                        </div>
-                        <h4>PHP</h4>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h4>MySQL</h4>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
-                        </div>
+                <div class="project-info">
+                    <h3>Yvonne Chanda Portfolio</h3>
+                    <p>A professional portfolio website showcasing the work and skills of Yvonne Chanda with a clean, modern design.</p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Responsive</span>
                     </div>
                 </div>
             </div>
             
-            <!-- Languages Section -->
-            <div class="row mt-5">
-                <div class="col-12 text-center" data-aos="fade-up">
-                    <div class="section-title">
-                        <h3>Languages</h3>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="language-card">
-                        <h4>English</h4>
-                        <div class="language-level">
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
+            <div class="project-card" data-category="frontend">
+                <div class="project-img">
+                    <img src="/images/WhatsApp Image 2025-04-07 at 15.41.49_377aacd1.jpg" alt"Ronalds Portfolio">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://ronald-nkhoma.netlify.app/" target="_blank" class="project-link"><i class="fas fa-link"></i></a>
+                            <a href="#" class="project-github"><i class="fab fa-github"></i></a>
                         </div>
-                        <p>Fluent</p>
                     </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="language-card">
-                        <h4>Chichewa</h4>
-                        <div class="language-level">
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                        </div>
-                        <p>Native</p>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="language-card">
-                        <h4>French</h4>
-                        <div class="language-level">
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                        </div>
-                        <p>Basic</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <!-- <div class="project-thumbnail"> -->
 
-    <!-- Projects Section -->
-    <section id="projects" class="section-padding">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 text-center" data-aos="fade-up">
-                    <div class="section-title">
-                        <h2>My Projects</h2>
-                        <p>Here are some of my recent works</p>
+                </div>
+                <div class="project-info">
+                    <h3>Ronald Nkhoma Portfolio</h3>
+                    <p>Ronald Nkhoma's portfolio showcasing his technical skills in cybersecurity and graphic designing with a modern, interactive, and visually appealing web application.</p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Animations</span>
                     </div>
                 </div>
             </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="images/project1.jpg" alt="Project 1" class="img-fluid">
-                        </div>
-                        <div class="project-content">
-                            <h4>E-commerce Website</h4>
-                            <p>A fully responsive e-commerce platform built with React and Node.js</p>
-                            <div class="project-tags">
-                                <span>React</span>
-                                <span>Node.js</span>
-                                <span>MongoDB</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-sm btn-outline-light"><i class="fas fa-link"></i> Live Demo</a>
-                                <a href="#" class="btn btn-sm btn-outline-light"><i class="fab fa-github"></i> GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="images/project2.jpg" alt="Project 2" class="img-fluid">
-                        </div>
-                        <div class="project-content">
-                            <h4>Portfolio Website</h4>
-                            <p>A modern portfolio website with smooth animations and responsive design</p>
-                            <div class="project-tags">
-                                <span>HTML5</span>
-                                <span>CSS3</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-sm btn-outline-light"><i class="fas fa-link"></i> Live Demo</a>
-                                <a href="#" class="btn btn-sm btn-outline-light"><i class="fab fa-github"></i> GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="images/project3.jpg" alt="Project 3" class="img-fluid">
-                        </div>
-                        <div class="project-content">
-                            <h4>Task Management App</h4>
-                            <p>A task management application with user authentication and real-time updates</p>
-                            <div class="project-tags">
-                                <span>React</span>
-                                <span>Firebase</span>
-                                <span>Bootstrap</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-sm btn-outline-light"><i class="fas fa-link"></i> Live Demo</a>
-                                <a href="#" class="btn btn-sm btn-outline-light"><i class="fab fa-github"></i> GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-12 text-center" data-aos="fade-up">
-                    <a href="#" class="btn btn-primary">View All Projects</a>
-                </div>
-            </div>
-        </div>
-    </section>
+            
 
-    <!-- Contact Section -->
-    <section id="contact" class="section-padding bg-light">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 text-center" data-aos="fade-up">
-                    <div class="section-title">
-                        <h2>Get In Touch</h2>
-                        <p>Feel free to contact me for any project or collaboration</p>
+            <div class="project-card" data-category="web frontend">
+                <div class="project-img">
+                    <img src="/placeholder.svg?height=300&width=400" alt="GZI Website">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://gzi.netlify.app/" target="_blank" class="project-link"><i class="fas fa-link"></i></a>
+                            <a href="#" class="project-github"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="project-info">
+                    <h3>GZI Website</h3>
+                    <p>A corporate website with a professional design, featuring information about services, team members, and contact details.</p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Corporate</span>
                     </div>
                 </div>
             </div>
-            <div class="row g-4">
-                <div class="col-md-5" data-aos="fade-right">
+            
+            <div class="project-card" data-category="web backend">
+                <div class="project-img">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Nyamula Logistics">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://www.nyamula.com" target="_blank" class="project-link"><i class="fas fa-link"></i></a>
+                            <a href="#" class="project-github"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Nyamula Logistics</h3>
+                    <p>A comprehensive logistics website with WhatsApp integration and payment gateway functionality for a seamless user experience.</p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>PHP</span>
+                        <span>Payment Integration</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- <div class="project-card" data-category="frontend">
+                <div class="project-img">
+                    <img src="/placeholder.svg?height=300&width=400" alt="E-commerce Website">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                            <a href="#" class="project-github"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- <div class="project-info">
+                    <h3>E-commerce Website</h3>
+                    <p>A responsive e-commerce platform built with HTML, CSS, JavaScript, and PHP.</p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>PHP</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card" data-category="frontend">
+                <div class="project-img">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Interactive Dashboard">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                            <a href="#" class="project-github"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Interactive Dashboard</h3>
+                    <p>A data visualization dashboard with interactive charts and filters.</p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        
+        <div class="projects-cta">
+            <a href="#contact" class="cta-button">Interested in working together? Contact me!</a>
+        </div>
+    </div>
+</section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Get in Touch</h2>
+                <div class="contact-content">
                     <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="icon"><i class="fas fa-envelope"></i></div>
-                            <div class="text">
-                                <h5>Email</h5>
-                                <p>euphemia@example.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="icon"><i class="fas fa-phone"></i></div>
-                            <div class="text">
-                                <h5>Phone</h5>
-                                <p>+265 123 456 789</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <div class="text">
-                                <h5>Location</h5>
-                                <p>Lilongwe, Malawi</p>
-                            </div>
-                        </div>
-                        <div class="social-links">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        </div>
+                        <h3>Contact Information</h3>
+                        <p><i class="fas fa-envelope"></i> euphemiachikungulu347@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> 0762273483</p>
+                        <p><i class="fas fa-map-marker-alt"></i> lusaka, Zambia</p>
                     </div>
-                </div>
-                <div class="col-md-7" data-aos="fade-left">
-                    <form class="contact-form">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Your Name" required>
-                            </div>
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" placeholder="Your Email" required>
-                            </div>
-                            <div class="col-12">
-                                <input type="text" class="form-control" placeholder="Subject" required>
-                            </div>
-                            <div class="col-12">
-                                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary">Send Message</button>
-                            </div>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
                         </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
                     </form>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Footer -->
-    <footer class="py-4">
+    <footer>
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="mb-0 text-white">© 2023 Euphemia Chikungulu. All Rights Reserved.</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <p class="mb-0 text-white">Designed with <i class="fas fa-heart text-danger"></i> by Euphemia</p>
-                </div>
-            </div>
+            <p>&copy; 2025 Euphemia Chikungulu. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
