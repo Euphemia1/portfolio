@@ -1,3 +1,46 @@
+/* About Page Custom Styles */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+.about-image {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    justify-content: center;
+}
+.about-image .image-frame {
+    max-width: 350px;
+    width: 100%;
+}
+.about-text {
+    flex: 2;
+    min-width: 300px;
+}
+.about-text h3 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.2rem;
+}
+.about-text p.about-intro {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+.about-details-list {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+.about-details-list li {
+    margin-bottom: 0.5rem;
+}
+.about-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
 /* Contact Preview Section (Let's Connect) */
 .contact-content {
     display: flex;
