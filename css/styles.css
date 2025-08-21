@@ -1,3 +1,66 @@
+/* Contact Preview Section (Let's Connect) */
+.contact-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.contact-text {
+    flex: 1;
+    min-width: 300px;
+}
+.contact-text h2 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+.contact-text p {
+    margin-bottom: 2rem;
+}
+.contact-info {
+    margin-bottom: 2rem;
+}
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.2rem;
+}
+.contact-item .contact-icon {
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    font-size: 1.3rem;
+}
+.contact-item .contact-link {
+    font-size: 1.1rem;
+    color: #333;
+    text-decoration: none;
+    word-break: break-all;
+}
+.contact-item .contact-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+.contact-text .btn.primary-btn {
+    font-size: 1.1rem;
+    padding: 14px 36px;
+}
+.contact-image {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    justify-content: center;
+}
+.contact-image img {
+    max-width: 320px;
+    width: 100%;
+}
 /* Modern Portfolio Styles for Euphemia Chikungulu */
 :root {
     --primary-color: #3a59d1;
