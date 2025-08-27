@@ -1,3 +1,18 @@
+/* Hero main name and typed line for Euphemia */
+.hero-main-name {
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: #3a59d1;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+.hero-main-typed {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 18px;
+}
 /* Custom left-aligned hero section for Euphemia */
 .hero-content.hero-left-align {
     align-items: flex-start;
