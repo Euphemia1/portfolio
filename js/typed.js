@@ -5,11 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var typedText = document.querySelector('.typed-text');
     if (!typedText) return;
     var words = [
-        'Software Engineer',
-        'Web Developer',
-        'UI/UX Designer',
-        'System Integrator',
-        'Tech Enthusiast'
+        'software engineer',
+        'innovator',
+        'problem solver'
     ];
     var wordIndex = 0;
     var charIndex = 0;

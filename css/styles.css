@@ -1,3 +1,57 @@
+/* Custom left-aligned hero section for Euphemia */
+.hero-content.hero-left-align {
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 40px;
+}
+.hero-text.hero-text-left {
+    text-align: left;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-right: 0;
+    max-width: 600px;
+}
+.hero-name {
+    font-size: 64px;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    margin-top: 30px;
+    letter-spacing: -1px;
+    text-align: left;
+    line-height: 1.1;
+}
+.hero-typed-line {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 18px;
+    text-align: left;
+    min-height: 48px;
+}
+.typed-text {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 2.2rem;
+}
+@media (max-width: 900px) {
+    .hero-content.hero-left-align {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .hero-text.hero-text-left {
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+    .hero-name {
+        font-size: 2.2rem;
+    }
+    .hero-typed-line, .typed-text {
+        font-size: 1.3rem;
+    }
+}
 /* Timeline Work Experience Styles */
 .timeline {
     position: relative;
