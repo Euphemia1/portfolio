@@ -1,3 +1,140 @@
+/* Responsive Section Headers and Spacing */
+@media (max-width: 900px) {
+    .section-header h2, .about-angled-header h1, .footer-name {
+        font-size: 1.5rem;
+        text-align: left;
+        margin-bottom: 0.5em;
+    }
+    .section-header .underline, .about-angled-header p {
+        margin-left: 0;
+    }
+    .about-angled-header {
+        padding: 32px 6vw 18px 6vw;
+        text-align: left;
+    }
+    .about-angled-header h1 {
+        font-size: 2rem;
+    }
+    .about-section .about-content, .edu-section .edu-grid, .companies-list, .contact-content {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+    }
+    .about-image, .about-text, .edu-card, .timeline-item, .contact-card {
+        width: 100%;
+        min-width: 0;
+    }
+    .container {
+        padding: 0 4vw;
+    }
+    .hero-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 18px;
+    }
+    .hero-main-name {
+        font-size: 2rem;
+    }
+    .hero-main-typed {
+        font-size: 1.1rem;
+    }
+    .hero-image img {
+        width: 160px;
+        height: 160px;
+        object-fit: cover;
+    }
+    .cta-buttons {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    .footer-main {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .footer-name {
+        font-size: 1.2rem;
+    }
+}
+@media (max-width: 600px) {
+    .section-header h2, .about-angled-header h1, .footer-name {
+        font-size: 1.1rem;
+        margin-bottom: 0.3em;
+    }
+    .about-angled-header {
+        padding: 18px 2vw 10px 2vw;
+    }
+    .hero-main-name {
+        font-size: 1.2rem;
+    }
+    .hero-main-typed {
+        font-size: 0.95rem;
+    }
+    .hero-image img {
+        width: 110px;
+        height: 110px;
+    }
+    .container {
+        padding: 0 2vw;
+    }
+    .footer-main {
+        gap: 4px;
+    }
+}
+/* Responsive Navigation and Header */
+@media (max-width: 900px) {
+    header {
+        flex-direction: row;
+        padding: 10px 8px;
+    }
+    .nav-links {
+        position: fixed;
+        top: 60px;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 70vw;
+        max-width: 320px;
+        height: 100vh;
+        box-shadow: -2px 0 16px rgba(0,0,0,0.08);
+        transform: translateX(100%);
+        transition: transform 0.3s;
+        z-index: 2000;
+        gap: 0;
+        padding: 30px 24px;
+    }
+    .nav-links.open {
+        transform: translateX(0);
+    }
+    .nav-links li {
+        margin: 18px 0;
+    }
+    .hamburger {
+        display: block;
+        z-index: 2100;
+    }
+}
+@media (max-width: 600px) {
+    header {
+        flex-direction: row;
+        padding: 6px 2vw;
+    }
+    .logo a {
+        font-size: 1.1rem;
+    }
+    .nav-links {
+        top: 44px;
+        width: 90vw;
+        max-width: 100vw;
+        padding: 18px 10px;
+    }
+    .nav-links li {
+        margin: 12px 0;
+    }
+}
 /* Responsive Styles for Mobile and Tablet */
 @media (max-width: 900px) {
     header {

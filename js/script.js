@@ -10,4 +10,17 @@ window.addEventListener('DOMContentLoaded', function() {
     }, 1500); // 1.5 seconds
 });
 
-// (Optional) Hamburger menu and other scripts can be added here
+// Hamburger menu for mobile nav
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+        });
+        // Close nav when clicking a link (for better UX)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('open'));
+        });
+    }
+});
