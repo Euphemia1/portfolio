@@ -1,3 +1,81 @@
+/* Enhanced Contact Card Styles */
+.contact-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(58,89,209,0.10);
+    padding: 40px 36px 32px 36px;
+    max-width: 480px;
+    margin-right: 40px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.contact-social {
+    margin: 18px 0 18px 0;
+}
+.contact-social a {
+    display: inline-block;
+    margin-right: 16px;
+    color: var(--primary-color);
+    font-size: 1.7rem;
+    transition: color 0.2s;
+}
+.contact-social a:hover {
+    color: var(--primary-dark);
+}
+.contact-card .btn.primary-btn {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    padding: 12px 36px;
+}
+.contact-card .contact-info {
+    margin-bottom: 10px;
+}
+.contact-card .contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.1rem;
+}
+.contact-card .contact-icon {
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 14px;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 8px rgba(58,89,209,0.10);
+}
+.contact-card .contact-link {
+    font-size: 1.08rem;
+    color: #333;
+    text-decoration: none;
+    word-break: break-all;
+    transition: color 0.2s;
+}
+.contact-card .contact-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+@media (max-width: 900px) {
+    .contact-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .contact-card {
+        margin-right: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+    .contact-image {
+        margin-top: 30px;
+    }
+}
 /* Hero main name and typed line for Euphemia */
 .hero-main-name {
     font-size: 4.5rem;
