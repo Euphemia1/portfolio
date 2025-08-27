@@ -611,30 +611,22 @@ header.scrolled {
     font-size: 60px;
     margin-bottom: 20px;
     color: var(--primary-color);
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s forwards;
+    /* Removed opacity and animation for visibility */
 }
 .hero-text h2 {
     font-size: 32px;
     margin-bottom: 20px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s 0.2s forwards;
+    /* Removed opacity and animation for visibility */
 }
 .hero-text p {
     font-size: 18px;
     margin-bottom: 30px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s 0.4s forwards;
+    /* Removed opacity and animation for visibility */
 }
 .cta-buttons {
     display: flex;
     gap: 15px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s 0.6s forwards;
+    /* Removed opacity and animation for visibility */
 }
 .hero-image {
     flex: 1;
