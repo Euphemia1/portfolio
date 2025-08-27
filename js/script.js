@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             preloader.style.display = 'none';
         }, 500);
-    }, 5000); // 5 seconds
+    }, 1500); // 1.5 seconds
 });
 
 // (Optional) Hamburger menu and other scripts can be added here
