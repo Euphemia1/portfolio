@@ -39,8 +39,15 @@
 
     <!-- Featured Projects Section -->
     <section class="featured-projects-section">
-        <div class="container"></div>
-                <div class="project-card">
+        <div class="container">
+            <div class="projects-tabs">
+                <button class="tab active" data-filter="all">All</button>
+                <button class="tab" data-filter="logistics">Logistics</button>
+                <button class="tab" data-filter="web">Web Apps</button>
+                <button class="tab" data-filter="sustainability">Sustainability</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-category="logistics">
                     <div class="project-image">
                         <img src="images/_MG_8821.jpg" alt="Logistics Management System">
                         <div class="project-overlay">
@@ -62,7 +69,7 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-category="web">
                     <div class="project-image">
                         <img src="images/WhatsApp Image 2025-08-21 at 14.28.05_466d1e21.jpg" alt="FlowCheck Application">
                         <div class="project-overlay">
@@ -84,6 +91,31 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="project-card" data-category="sustainability">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400?text=EcoWaste" alt="EcoWaste Sustainable Waste Management Platform">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://ecowaste-omega.vercel.app/" class="project-link" title="Live Demo" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://github.com/Euphemia1" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Sustainability</div>
+                        <h3>EcoWaste</h3>
+                        <p>Sustainable waste management platform with impact dashboard, pickup scheduling, and recycling guides.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Chart.js</span>
+                            <span class="tech-tag">Vercel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <!-- Articles & Features Section -->
     <section class="articles-section">
@@ -193,6 +225,37 @@
         </div>
     </footer>
 
+    <script>
+    (function() {
+        var tabs = document.querySelectorAll('.projects-tabs .tab');
+        var cards = document.querySelectorAll('.projects-grid .project-card');
+        if (!tabs.length || !cards.length) return;
+
+        function setActiveTab(clicked) {
+            tabs.forEach(function(t) { t.classList.remove('active'); });
+            clicked.classList.add('active');
+        }
+
+        function filterCards(filter) {
+            cards.forEach(function(card) {
+                if (filter === 'all') {
+                    card.style.display = '';
+                } else {
+                    var match = (card.getAttribute('data-category') === filter);
+                    card.style.display = match ? '' : 'none';
+                }
+            });
+        }
+
+        tabs.forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                var filter = tab.getAttribute('data-filter');
+                setActiveTab(tab);
+                filterCards(filter);
+            });
+        });
+    })();
+    </script>
     <script src="js/script.js"></script>
 </body>
 </html>
