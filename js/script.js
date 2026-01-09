@@ -70,7 +70,7 @@ const knowledgeBase = {
     }
 };
 
-const GEMINI_API_KEY = "YOUR_API_KEY_HERE"; // Placeholder for the User to fill
+const GEMINI_API_KEY = "AIzaSyD2v5-tMuuDNhis89CR75lk8qArmabDQJk"; // Placeholder for the User to fill
 
 async function initChatWidget() {
     const toggleBtn = document.getElementById('chat-toggle-btn');
