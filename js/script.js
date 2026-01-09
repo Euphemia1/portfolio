@@ -1,5 +1,5 @@
 // Preloader: Show bouncing letters for 5 seconds, then hide preloader and show site
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
     const preloader = document.querySelector('.preloader');
     if (preloader) {
         setTimeout(() => {
@@ -13,11 +13,11 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 // Hamburger menu for mobile nav
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     if (hamburger && navLinks) {
-        hamburger.addEventListener('click', function() {
+        hamburger.addEventListener('click', function () {
             navLinks.classList.toggle('open');
         });
         // Close nav when clicking a link (for better UX)
@@ -108,19 +108,19 @@ async function initChatWidget() {
         try {
             // Construct Prompt
             const prompt = constructPrompt(message);
-            
+
             // Call Gemini API
             const response = await callGeminiAPI(prompt);
-            
+
             // Remove Typing Indicator
             removeTypingIndicator(typingId);
-            
+
             // Add AI Response
             appendMessage(response, 'ai');
 
         } catch (error) {
             removeTypingIndicator(typingId);
-            appendMessage("I'm having a little trouble connecting right now. Please populate the API Key in script.js!", 'ai');
+            appendMessage(`Connection Error: ${error.message}. Please check console for details.`, 'ai');
             console.error("Gemini Error:", error);
         }
     }
@@ -135,18 +135,18 @@ function appendMessage(text, sender) {
     const chatMessages = document.getElementById('chat-messages');
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('message', `${sender}-message`);
-    
+
     const contentDiv = document.createElement('div');
     contentDiv.classList.add('message-content');
     contentDiv.textContent = text;
-    
+
     const timeDiv = document.createElement('div');
     timeDiv.classList.add('message-time');
     timeDiv.textContent = 'Just now';
-    
+
     messageDiv.appendChild(contentDiv);
     messageDiv.appendChild(timeDiv);
-    
+
     chatMessages.appendChild(messageDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
@@ -154,7 +154,7 @@ function appendMessage(text, sender) {
 function showTypingIndicator() {
     const chatMessages = document.getElementById('chat-messages');
     const id = 'typing-' + Date.now();
-    
+
     const typingDiv = document.createElement('div');
     typingDiv.id = id;
     typingDiv.classList.add('message', 'ai-message');
@@ -165,7 +165,7 @@ function showTypingIndicator() {
             <div class="typing-dot"></div>
         </div>
     `;
-    
+
     chatMessages.appendChild(typingDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
     return id;
@@ -197,8 +197,8 @@ async function callGeminiAPI(prompt) {
         throw new Error("API Key not set");
     }
 
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
-    
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY.trim()}`;
+
     const response = await fetch(API_URL, {
         method: "POST",
         headers: {
