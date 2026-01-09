@@ -82,7 +82,7 @@
                     <div class="project-content">
                         <div class="project-category">Web Application</div>
                         <h3>FlowCheck</h3>
-                        <p>A modern web application for workflow management and process optimization, designed to streamline business operations and improve productivity.</p>
+                        <p>A modern web application for workflow management and process optimization.</p>
                         <div class="project-tech">
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">JavaScript</span>
@@ -94,7 +94,7 @@
 
                 <div class="project-card" data-category="sustainability">
                     <div class="project-image">
-                        <img src="https://via.placeholder.com/600x400?text=EcoWaste" alt="EcoWaste Sustainable Waste Management Platform">
+                        <img src="https://via.placeholder.com/600x400?text=EcoWaste" alt="EcoWaste">
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="https://ecowaste-omega.vercel.app/" class="project-link" title="Live Demo" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i></a>
@@ -105,7 +105,7 @@
                     <div class="project-content">
                         <div class="project-category">Sustainability</div>
                         <h3>EcoWaste</h3>
-                        <p>Sustainable waste management platform with impact dashboard, pickup scheduling, and recycling guides.</p>
+                        <p>Sustainable waste management platform with impact dashboard.</p>
                         <div class="project-tech">
                             <span class="tech-tag">Next.js</span>
                             <span class="tech-tag">TypeScript</span>
@@ -116,6 +116,28 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- AI Portfolio Section -->
+    <section class="ai-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ask My Portfolio</h2>
+                <div class="underline"></div>
+                <p>Ask AI about my projects, skills, or experience building Bravelender.</p>
+            </div>
+
+            <div class="ai-box">
+                <input
+                    id="ai-input"
+                    type="text"
+                    placeholder="e.g. Explain Bravelender or summarize my skills"
+                />
+                <button onclick="askAI()">Ask</button>
+                <p id="ai-output"></p>
+            </div>
+        </div>
+    </section>
 
     <!-- Articles & Features Section -->
     <section class="articles-section">
@@ -131,7 +153,7 @@
                         <span class="article-category">Tech Innovation</span>
                     </div>
                     <h3>Building Inclusive Tech Solutions in Africa</h3>
-                    <p>Exploring how technology can bridge gaps in healthcare, education, and financial services across African communities.</p>
+                    <p>Exploring how technology can bridge gaps in healthcare, education, and financial services.</p>
                     <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                 </article>
 
@@ -141,7 +163,7 @@
                         <span class="article-category">Community Impact</span>
                     </div>
                     <h3>The Power of Purpose-Driven Development</h3>
-                    <p>How focusing on community needs and social impact drives better software solutions and user experiences.</p>
+                    <p>How focusing on community needs drives better software solutions.</p>
                     <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                 </article>
 
@@ -150,62 +172,10 @@
                         <span class="article-date">January 2025</span>
                         <span class="article-category">Career Journey</span>
                     </div>
-                    <h3>From Student to Software Engineer: Lessons Learned</h3>
-                    <p>Reflecting on my journey through university, hackathons, and real-world software development experiences.</p>
+                    <h3>From Student to Software Engineer</h3>
+                    <p>Lessons learned through real-world software development experiences.</p>
                     <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                 </article>
-
-                <article class="article-card">
-                    <div class="article-meta">
-                        <span class="article-date">October 2023</span>
-                        <span class="article-category">Hackathons</span>
-                    </div>
-                    <h3>Africa2Silicon Valley Hackathon Experience</h3>
-                    <p>My journey to becoming a semi-finalist and the valuable lessons learned about innovation under pressure.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                </article>
-            </div>
-        </div>
-    </section>
-
-
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fas fa-users"></i>
-                    </div> 
-                    <h3>ICTAZ Leadership</h3>
-                    <p>Served as Secretary General of ZUT-ICTAZ, promoting ICT education and community engagement.</p>
-                    <div class="contribution-stats">
-                        <div class="stat">
-                            <strong>2</strong>
-                            <span>Years</span>
-                        </div>
-                        <div class="stat">
-                            <strong>100+</strong>
-                            <span>Students Engaged</span>
-                        </div>
-                    </div>
-                    <a href="#" class="btn secondary-btn">Learn More</a>
-                </div>
-
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Tech Mentorship</h3>
-                    <p>Mentoring aspiring developers and promoting diversity in technology through workshops and events.</p>
-                    <div class="contribution-stats">
-                        <div class="stat">
-                            <strong>20+</strong>
-                            <span>Mentees</span>
-                        </div>
-                        <div class="stat">
-                            <strong>5</strong>
-                            <span>Workshops</span>
-                        </div>
-                    </div>
-                    <a href="contact.html" class="btn secondary-btn">Get Mentorship</a>
-                </div>
             </div>
         </div>
     </section>
@@ -216,12 +186,27 @@
                 <h2 class="footer-name">Euphemia Chikungulu</h2>
                 <p class="footer-role">Software Engineer</p>
                 <div class="footer-social-icons">
-                    <a href="https://www.linkedin.com/in/euphemia-chikungulu-a37745349?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://x.com/tech_em_press?t=H4e0VKX0gO-kRPnOj_YSPw&s=09" target="_blank" rel="noopener" title="X"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://github.com/Euphemia1" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/euphemia-chikungulu-a37745349"
+   target="_blank"
+   rel="noopener noreferrer">
+   <i class="fab fa-linkedin"></i>
+</a>
+
+<a href="https://x.com/tech_em_press"
+   target="_blank"
+   rel="noopener noreferrer">
+   <i class="fab fa-x-twitter"></i>
+</a>
+
+<a href="https://github.com/Euphemia1"
+   target="_blank"
+   rel="noopener noreferrer">
+   <i class="fab fa-github"></i>
+</a>
+
                 </div>
             </div>
-            <p class="footer-copyright">&copy; 2025 Euphemia Chikungulu. All Rights Reserved.</p>
+            <p>&copy; 2025 Euphemia Chikungulu. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -232,30 +217,28 @@
         if (!tabs.length || !cards.length) return;
 
         function setActiveTab(clicked) {
-            tabs.forEach(function(t) { t.classList.remove('active'); });
+            tabs.forEach(t => t.classList.remove('active'));
             clicked.classList.add('active');
         }
 
         function filterCards(filter) {
-            cards.forEach(function(card) {
-                if (filter === 'all') {
-                    card.style.display = '';
-                } else {
-                    var match = (card.getAttribute('data-category') === filter);
-                    card.style.display = match ? '' : 'none';
-                }
+            cards.forEach(card => {
+                card.style.display =
+                    filter === 'all' || card.dataset.category === filter
+                        ? ''
+                        : 'none';
             });
         }
 
-        tabs.forEach(function(tab) {
+        tabs.forEach(tab => {
             tab.addEventListener('click', function() {
-                var filter = tab.getAttribute('data-filter');
                 setActiveTab(tab);
-                filterCards(filter);
+                filterCards(tab.dataset.filter);
             });
         });
     })();
     </script>
+
     <script src="js/script.js"></script>
 </body>
 </html>
