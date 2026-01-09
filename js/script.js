@@ -24,3 +24,39 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+async function askAI() {
+    const input = document.getElementById("ai-input");
+    const output = document.getElementById("ai-output");
+
+    if (!input || !output) return;
+
+    const question = input.value.trim();
+    if (!question) {
+        output.textContent = "Please enter a question.";
+        return;
+    }
+
+    output.textContent = "Thinking...";
+
+    try {
+        const response = await fetch("/api/ask.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ prompt: question })
+        });
+
+        const data = await response.json();
+
+        const answer =
+            data.candidates?.[0]?.content?.parts?.[0]?.text ||
+            "Sorry, I couldn't generate a response.";
+
+        output.textContent = answer;
+    } catch (error) {
+        console.error(error);
+        output.textContent = "Something went wrong. Please try again.";
+    }
+}
