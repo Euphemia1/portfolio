@@ -38,7 +38,7 @@ const knowledgeBase = {
         role: "Software Engineer",
         tagline: "Purpose-driven software engineer focused on building inclusive, user-friendly systems.",
         experience: "1 Year",
-        location: "Blantyre, Malawi"
+        location: "Lusaka, Zambia"
     },
     skills: [
         "Software Development", "Web Development", "UI/UX Design", "Community Building",
