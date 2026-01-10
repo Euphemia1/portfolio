@@ -70,7 +70,7 @@ const knowledgeBase = {
     }
 };
 
-const GEMINI_API_KEY = "AIzaSyD2v5-tMuuDNhis89CR75lk8qArmabDQJk"; // Placeholder for the User to fill
+const GEMINI_API_KEY = "AIzaSyDIU76Ibak1HyV8ZiQHs5JDYHuUVvnPVmY"; // Updated by User
 
 async function initChatWidget() {
     const toggleBtn = document.getElementById('chat-toggle-btn');
@@ -193,11 +193,11 @@ function constructPrompt(userQuery) {
 }
 
 async function callGeminiAPI(prompt) {
-    if (GEMINI_API_KEY === "YOUR_API_KEY_HERE") {
+    if (GEMINI_API_KEY === "AIzaSyDIU76Ibak1HyV8ZiQHs5JDYHuUVvnPVmY") {
         throw new Error("API Key not set");
     }
 
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY.trim()}`;
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${GEMINI_API_KEY.trim()}`;
 
     try {
         const response = await fetch(API_URL, {
