@@ -1,4 +1,4 @@
-// Preloader: Show bouncing letters for 5 seconds, then hide preloader and show site
+
 window.addEventListener('DOMContentLoaded', function () {
     const preloader = document.querySelector('.preloader');
     if (preloader) {
@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// Hamburger menu for mobile nav
+
 document.addEventListener('DOMContentLoaded', function () {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -42,20 +42,28 @@ const knowledgeBase = {
     },
     skills: [
         "Software Development", "Web Development", "UI/UX Design", "Community Building",
-        "Python", "JavaScript", "HTML/CSS", "React", "Node.js"
+        "Python", "JavaScript", "HTML/CSS", "React", "Node.js", "Next.js", "TypeScript", "Supabase"
     ],
     projects: [
         {
-            name: "Community Connect",
-            description: "A platform connecting local volunteers with community service opportunities."
+            name: "Smart Logistics Dashboard",
+            description: "Real-time logistics tracking and management system with predictive analytics for supply chain optimization. Built with React, Supabase, and Postman."
         },
         {
-            name: "EduTrack",
-            description: "A student performance tracking system for local schools."
+            name: "FlowCheck",
+            description: "A modern web application for workflow management and process optimization. Built with React, JavaScript, CSS3, and Netlify."
         },
         {
-            name: "HealthBridge",
-            description: "An app improving access to basic health information in rural areas."
+            name: "EcoWaste",
+            description: "Sustainable waste management platform with impact dashboard. Built with Next.js, TypeScript, Chart.js, and Vercel."
+        },
+        {
+            name: "KMS",
+            description: "Comprehensive management system solution for organizational efficiency. A web application designed to streamline business processes."
+        },
+        {
+            name: "LT Construction Software",
+            description: "Intelligent cost estimation and real-time reporting software for the construction industry. Provides analytics and project management tools."
         }
     ],
     challenge: {
@@ -70,15 +78,46 @@ const knowledgeBase = {
     }
 };
 
-const GEMINI_API_KEY = "AIzaSyDIU76Ibak1HyV8ZiQHs5JDYHuUVvnPVmY"; // Updated by User
+// GEMINI_API_KEY is defined in config.js
+
 
 async function initChatWidget() {
+    // 1. Inject Chat Widget HTML if it doesn't exist
+    if (!document.getElementById('chat-widget-container')) {
+        createChatWidgetHTML();
+    }
+
     const toggleBtn = document.getElementById('chat-toggle-btn');
     const closeBtn = document.getElementById('chat-close-btn');
     const chatWindow = document.getElementById('chat-window');
     const sendBtn = document.getElementById('chat-send-btn');
     const chatInput = document.getElementById('chat-input');
     const chatMessages = document.getElementById('chat-messages');
+
+    // Handle "Ask My Portfolio" section in projects.html
+    const aiInput = document.getElementById('ai-input');
+    const aiOutput = document.getElementById('ai-output');
+    const aiBtn = document.querySelector('.ai-box button');
+
+    if (aiInput && aiOutput && aiBtn) {
+        aiBtn.addEventListener('click', async () => {
+            const query = aiInput.value.trim();
+            if (!query) return;
+
+            aiOutput.textContent = "Thinking...";
+            aiOutput.style.color = "#3a59d1";
+
+            try {
+                const prompt = constructPrompt(query);
+                const response = await callGeminiAPI(prompt);
+                aiOutput.textContent = response;
+                aiOutput.style.color = "#333";
+            } catch (error) {
+                aiOutput.textContent = "Error: " + error.message;
+                aiOutput.style.color = "red";
+            }
+        });
+    }
 
     if (!toggleBtn || !chatWindow) return;
 
@@ -90,8 +129,12 @@ async function initChatWidget() {
         }
     }
 
-    toggleBtn.addEventListener('click', toggleChat);
-    closeBtn.addEventListener('click', toggleChat);
+    // Event Delegation for Chat Toggle
+    document.body.addEventListener('click', function (e) {
+        if (e.target.closest('#chat-toggle-btn') || e.target.closest('#chat-close-btn')) {
+            toggleChat();
+        }
+    });
 
     // Send Message Logic
     async function handleSendMessage() {
@@ -129,6 +172,52 @@ async function initChatWidget() {
     chatInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') handleSendMessage();
     });
+}
+
+function createChatWidgetHTML() {
+    const div = document.createElement('div');
+    div.id = 'chat-widget-container';
+    div.className = 'chat-widget-container';
+    div.style.cssText = "position: fixed; bottom: 30px; right: 30px; z-index: 10000;";
+    div.innerHTML = `
+        <button id="chat-toggle-btn" class="chat-toggle-btn" aria-label="Open Chat">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+
+        <div id="chat-window" class="chat-window hidden">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <img src="images/WhatsApp Image 2025-08-21 at 14.28.06_35ba7d1d.jpg" alt="Virtual Euphemia"
+                        class="chat-avatar">
+                    <div class="chat-title">
+                        <h3>Virtual Euphemia</h3>
+                        <span class="status-indicator">Online</span>
+                    </div>
+                </div>
+                <button id="chat-close-btn" class="chat-close-btn" aria-label="Close Chat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div id="chat-messages" class="chat-messages">
+                <div class="message ai-message">
+                    <div class="message-content">
+                        Hi there! I'm Virtual Euphemia using Google Gemini. Ask me about my projects, skills, or my "New
+                        Year New Me" challenge!
+                    </div>
+                    <div class="message-time">Just now</div>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Ask me anything..." autocomplete="off">
+                <button id="chat-send-btn" class="chat-send-btn" aria-label="Send Message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(div);
 }
 
 function appendMessage(text, sender) {
@@ -193,8 +282,8 @@ function constructPrompt(userQuery) {
 }
 
 async function callGeminiAPI(prompt) {
-    if (GEMINI_API_KEY === "AIzaSyDIU76Ibak1HyV8ZiQHs5JDYHuUVvnPVmY") {
-        throw new Error("API Key not set");
+    if (typeof GEMINI_API_KEY === 'undefined' || !GEMINI_API_KEY || GEMINI_API_KEY === "YOUR_API_KEY_HERE") {
+        throw new Error("API Key not set. Please ensure js/config.js is created with your API key.");
     }
 
     const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${GEMINI_API_KEY.trim()}`;
@@ -224,3 +313,5 @@ async function callGeminiAPI(prompt) {
         throw error;
     }
 }
+
+
