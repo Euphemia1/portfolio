@@ -4,7 +4,8 @@
 exports.handler = async (event) => {
     try {
         const { prompt } = JSON.parse(event.body);
-        const API_KEY = process.env.GEMINI_API_KEY;
+        // Try both uppercase and lowercase versions
+        const API_KEY = process.env.GEMINI_API_KEY || process.env.gemini_api_key;
 
         if (!API_KEY) {
             return {
