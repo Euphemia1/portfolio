@@ -591,7 +591,19 @@ async function callGeminiAPI(prompt) {
 
     } catch (error) {
         console.error("AI Error:", error);
-        return "I'm having a little trouble connecting to my AI brain. Please try again later!";
+
+        // Provide more detailed feedback to the user
+        let friendlyMessage = "I'm having a little trouble connecting to my AI brain.";
+
+        if (error.message.includes("404")) {
+            friendlyMessage += " (Error 404: Netlify Function not found. Please ensure the site is fully deployed.)";
+        } else if (error.message.includes("Unexpected token") || error.message.includes("JSON")) {
+            friendlyMessage += " (Error: Invalid response from server. Check logs in Netlify.)";
+        } else {
+            friendlyMessage += ` (Details: ${error.message})`;
+        }
+
+        return friendlyMessage;
     }
 }
 
