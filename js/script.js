@@ -585,9 +585,15 @@ async function callGeminiAPI(prompt) {
 
         const data = await response.json();
 
-        // Return the text response from the AI
-        // If you use the standard Gemini format in your function:
-        return data.candidates[0].content.parts[0].text;
+        // Safety check for response structure
+        if (data && data.candidates && data.candidates[0] && data.candidates[0].content) {
+            return data.candidates[0].content.parts[0].text;
+        } else if (data && data.error) {
+            throw new Error(data.error);
+        } else {
+            console.error("Unexpected API response:", data);
+            throw new Error("Unexpected response structure from AI");
+        }
 
     } catch (error) {
         console.error("AI Error:", error);
