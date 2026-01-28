@@ -1186,6 +1186,58 @@
     cursor: not-allowed;
 }
 
+.chat-voice-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f8f9fa;
+    color: #666;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    margin-right: 8px;
+}
+
+.chat-voice-btn:hover {
+    background: #e9ecef;
+    color: var(--primary-color);
+}
+
+.chat-voice-btn.recording {
+    background: #dc3545;
+    color: white;
+    animation: pulse 1.5s infinite;
+}
+
+.chat-image-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f8f9fa;
+    color: #666;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    margin-right: 8px;
+}
+
+.chat-image-btn:hover {
+    background: #e9ecef;
+    color: var(--primary-color);
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+}
+
 /* Typing Indicator */
 .typing-indicator {
     display: flex;
@@ -2359,5 +2411,428 @@ header.scrolled {
 
     .contact-header p {
         font-size: 1.1rem;
+    }
+}
+
+/* AI Development Stack Badge Styles */
+.ai-stack-section {
+    padding: 30px 0;
+    background: #fdfdfd;
+    border-top: 1px solid #f0f0f0;
+    text-align: center;
+}
+
+.ai-stack-title {
+    font-size: 0.9rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.ai-stack-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.ai-stack-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.ai-stack-item:hover {
+    opacity: 1;
+}
+
+.ai-stack-item i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.ai-stack-item span {
+    font-weight: 700;
+    color: #444;
+    font-size: 1.1rem;
+}
+
+/* AI Resume Builder Styles */
+.resume-builder-section {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.resume-builder-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+@media (max-width: 900px) {
+    .resume-builder-container {
+        flex-direction: column;
+    }
+}
+
+.resume-input-section {
+    flex: 1;
+}
+
+.resume-input-section textarea {
+    width: 100%;
+    height: 300px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    resize: vertical;
+    margin-bottom: 15px;
+    transition: border-color 0.3s;
+}
+
+.resume-input-section textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+#generate-resume-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+}
+
+#generate-resume-btn:hover {
+    background: var(--primary-dark);
+}
+
+.resume-output-section {
+    flex: 1;
+}
+
+.resume-output {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 25px;
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.download-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+}
+
+.download-btn:hover {
+    background: #218838;
+}
+
+.resume-output h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.resume-output .section {
+    margin-bottom: 20px;
+}
+
+.resume-output .section h4 {
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.resume-output ul {
+    padding-left: 20px;
+    margin-bottom: 0;
+}
+
+.resume-output li {
+    margin-bottom: 5px;
+}
+
+/* AI-Powered Project Recommendations Styles */
+.recommendations-section {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.interest-selector {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.interest-selector p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.interest-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tag {
+    background: #fff;
+    color: var(--primary-color);
+    padding: 8px 20px;
+    border-radius: 30px;
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    display: inline-block;
+    margin: 5px;
+}
+
+.tag:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.tag.selected {
+    background: var(--primary-color);
+    color: white;
+}
+
+.recommended-projects {
+    text-align: center;
+}
+
+.no-selection {
+    font-size: 1.1rem;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+#recommended-projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+    .interest-tags {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .tag {
+        width: 80%;
+    }
+}
+
+/* Hero Banner Enhancement */
+.hero {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.95) 40%, rgba(255, 255, 255, 0.7) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Challenge Section Styles ... */
+
+
+/* Challenge Section Styles */
+.challenge-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #eef2ff 100%);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.challenge-section::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: rgba(58, 89, 209, 0.03);
+    border-radius: 50%;
+}
+
+.challenge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.challenge-card {
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(58, 89, 209, 0.05);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.challenge-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(58, 89, 209, 0.1);
+}
+
+.challenge-card.highlight {
+    background: white;
+    border: 1px solid rgba(58, 89, 209, 0.2);
+}
+
+.challenge-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.challenge-info {
+    flex: 1;
+}
+
+.challenge-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: var(--text-color);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress {
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 4px;
+    transition: width 1s ease-in-out;
+}
+
+.progress-text {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.ai-cta {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    background: rgba(58, 89, 209, 0.05);
+    border-radius: 15px;
+    border: 1px dashed var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.personalized-experience {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.experience-options h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.option-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.exp-option {
+    background: #fff;
+    color: var(--text-color);
+    border: 2px solid #e0e0e0;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.exp-option:hover {
+    border-color: var(--primary-color);
+    background: var(--primary-color);
+    color: white;
+}
+
+.exp-option.selected {
+    border-color: var(--primary-color);
+    background: var(--primary-color);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .challenge-section {
+        padding: 60px 0;
+    }
+
+    .challenge-card {
+        padding: 20px;
     }
 }
