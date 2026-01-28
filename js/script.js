@@ -611,6 +611,34 @@ function removeTypingIndicator(id) {
     if (element) element.remove();
 }
 
+function speakResponse(text) {
+    if ('speechSynthesis' in window) {
+        // Cancel any ongoing speech
+        window.speechSynthesis.cancel();
+
+        // Remove markdown or HTML tags for cleaner speech
+        const cleanText = text.replace(/[#*`_~]/g, '').replace(/<[^>]*>/g, '');
+
+        const utterance = new SpeechSynthesisUtterance(cleanText);
+        utterance.rate = 1.0;
+        utterance.pitch = 1.0;
+        utterance.volume = 1.0;
+
+        // Find a nice natural voice (prefers female for Euphemia)
+        const voices = window.speechSynthesis.getVoices();
+        const preferredVoice = voices.find(voice =>
+            (voice.name.includes('Google') || voice.name.includes('Natural')) &&
+            (voice.name.toLowerCase().includes('female') || voice.name.includes('US English'))
+        ) || voices[0];
+
+        if (preferredVoice) {
+            utterance.voice = preferredVoice;
+        }
+
+        window.speechSynthesis.speak(utterance);
+    }
+}
+
 function constructPrompt(userQuery) {
     const context = `
     You are "Virtual Euphemia", an enthusiastic and professional AI assistant for Euphemia Chikungulu's portfolio.
