@@ -341,9 +341,6 @@ async function initChatWidget() {
             // Add AI Response
             appendMessage(response, 'ai');
 
-            // Speak the response if TTS is available
-            speakResponse(response);
-
         } catch (error) {
             removeTypingIndicator(typingId);
             appendMessage(`Connection Error: ${error.message}. Please check console for details.`, 'ai');
@@ -432,85 +429,6 @@ async function initChatWidget() {
 
     // Setup image upload functionality
     setupImageUpload();
-
-    // Voice Recognition Setup
-    let recognition;
-    let isListening = false;
-
-    // Check if browser supports speech recognition
-    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        recognition = new SpeechRecognition();
-        recognition.continuous = false;
-        recognition.interactive = true;
-        recognition.lang = 'en-US';
-        recognition.maxAlternatives = 1;
-
-        recognition.onresult = function (event) {
-            const transcript = event.results[0][0].transcript;
-            chatInput.value = transcript;
-            toggleVoiceButton(false);
-            // Automatically send the recognized text
-            handleSendMessage();
-        };
-
-        recognition.onerror = function (event) {
-            console.error('Speech recognition error', event.error);
-            toggleVoiceButton(false);
-            alert('Voice recognition error: ' + event.error);
-        };
-
-        recognition.onend = function () {
-            toggleVoiceButton(false);
-        };
-    }
-
-    function toggleVoiceButton(listening) {
-        const voiceBtn = document.getElementById('chat-voice-btn');
-        if (voiceBtn) {
-            if (listening) {
-                voiceBtn.classList.add('recording');
-                voiceBtn.innerHTML = '<i class="fas fa-microphone-slash"></i>';
-            } else {
-                voiceBtn.classList.remove('recording');
-                voiceBtn.innerHTML = '<i class="fas fa-microphone"></i>';
-            }
-        }
-        isListening = listening;
-    }
-
-    function startVoiceRecognition() {
-        if (!recognition) {
-            alert('Your browser does not support voice recognition. Please use Chrome for best experience.');
-            return;
-        }
-
-        try {
-            recognition.start();
-            toggleVoiceButton(true);
-        } catch (error) {
-            console.error('Error starting speech recognition:', error);
-        }
-    }
-
-    function stopVoiceRecognition() {
-        if (recognition) {
-            recognition.stop();
-            toggleVoiceButton(false);
-        }
-    }
-
-    // Voice button event listener
-    const voiceBtn = document.getElementById('chat-voice-btn');
-    if (voiceBtn) {
-        voiceBtn.addEventListener('click', () => {
-            if (isListening) {
-                stopVoiceRecognition();
-            } else {
-                startVoiceRecognition();
-            }
-        });
-    }
 }
 
 function createChatWidgetHTML() {
@@ -552,9 +470,6 @@ function createChatWidgetHTML() {
                 <input type="text" id="chat-input" placeholder="Ask me anything..." autocomplete="off">
                 <button id="chat-image-btn" class="chat-image-btn" aria-label="Upload Image">
                     <i class="fas fa-image"></i>
-                </button>
-                <button id="chat-voice-btn" class="chat-voice-btn" aria-label="Voice Input">
-                    <i class="fas fa-microphone"></i>
                 </button>
                 <button id="chat-send-btn" class="chat-send-btn" aria-label="Send Message">
                     <i class="fas fa-paper-plane"></i>
@@ -609,34 +524,6 @@ function showTypingIndicator() {
 function removeTypingIndicator(id) {
     const element = document.getElementById(id);
     if (element) element.remove();
-}
-
-function speakResponse(text) {
-    if ('speechSynthesis' in window) {
-        // Cancel any ongoing speech
-        window.speechSynthesis.cancel();
-
-        // Remove markdown or HTML tags for cleaner speech
-        const cleanText = text.replace(/[#*`_~]/g, '').replace(/<[^>]*>/g, '');
-
-        const utterance = new SpeechSynthesisUtterance(cleanText);
-        utterance.rate = 1.0;
-        utterance.pitch = 1.0;
-        utterance.volume = 1.0;
-
-        // Find a nice natural voice (prefers female for Euphemia)
-        const voices = window.speechSynthesis.getVoices();
-        const preferredVoice = voices.find(voice =>
-            (voice.name.includes('Google') || voice.name.includes('Natural')) &&
-            (voice.name.toLowerCase().includes('female') || voice.name.includes('US English'))
-        ) || voices[0];
-
-        if (preferredVoice) {
-            utterance.voice = preferredVoice;
-        }
-
-        window.speechSynthesis.speak(utterance);
-    }
 }
 
 function constructPrompt(userQuery) {
