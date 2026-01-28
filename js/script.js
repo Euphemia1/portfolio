@@ -28,6 +28,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize Chat Widget
     initChatWidget();
+
+    // Auto-update Footer Year
+    const yearElement = document.getElementById('current-year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
 });
 
 /* --- Virtual Euphemia & Knowledge Base --- */
