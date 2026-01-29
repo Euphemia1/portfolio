@@ -10,8 +10,8 @@ exports.handler = async (event) => {
             };
         }
 
-        // Using gemini-1.5-flash via v1beta as requested
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+        // Using stable v1 instead of v1beta to resolve "Model not found" error
+        const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
         // Prepare the standard contents structure
         const parts = [{ text: prompt }];

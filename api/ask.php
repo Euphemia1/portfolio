@@ -66,8 +66,8 @@ $data = [
     ]]
 ];
 
-// Unified URL structure: v1beta and gemini-1.5-flash
-$url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" . trim($apiKey);
+// Unified URL structure: stable v1 and gemini-1.5-flash
+$url = "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=" . trim($apiKey);
 
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_POST, true);
