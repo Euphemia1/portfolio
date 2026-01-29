@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', function () {
             setTimeout(() => {
                 preloader.style.display = 'none';
             }, 500);
-        }, 1500); 
+        }, 1500);
     }
 });
 
@@ -163,7 +163,7 @@ function showImagePreview(imageData) {
         preview = document.createElement('div');
         preview.id = 'image-preview';
         preview.style.cssText = `position: absolute; bottom: 80px; right: 0; width: 100px; height: 100px; border: 2px solid #3a59d1; border-radius: 8px; overflow: hidden; z-index: 1001; background: white;`;
-        
+
         const img = document.createElement('img');
         img.src = imageData;
         img.style.cssText = `width: 100%; height: 100%; object-fit: cover;`;
@@ -171,7 +171,7 @@ function showImagePreview(imageData) {
         const removeBtn = document.createElement('button');
         removeBtn.innerHTML = '×';
         removeBtn.style.cssText = `position: absolute; top: 2px; right: 2px; background: red; color: white; border: none; border-radius: 50%; cursor: pointer;`;
-        
+
         removeBtn.onclick = function () {
             preview.remove();
             uploadedImage = null;
@@ -189,11 +189,10 @@ async function handleSendMessage() {
     const message = chatInput.value.trim();
     if (!message && !uploadedImage) return;
 
-    // Use a temp variable for the image so we can clear the UI immediately
     const imageToSend = uploadedImage;
-    
+
     if (imageToSend) {
-        appendMessageWithImage(message || 'Analyzing image...', imageToSend);
+        appendMessageWithImage(message || 'Analyzing this image...', imageToSend);
     } else {
         appendMessage(message, 'user');
     }
@@ -207,8 +206,10 @@ async function handleSendMessage() {
     const typingId = showTypingIndicator();
 
     try {
-        const prompt = constructPrompt(message);
+        // Construct the context-aware prompt
+        const prompt = constructPrompt(message || "Please describe and analyze this image in the context of your work.");
         const response = await callGeminiAPI(prompt, imageToSend);
+
         removeTypingIndicator(typingId);
         appendMessage(response, 'ai');
     } catch (error) {
@@ -219,39 +220,51 @@ async function handleSendMessage() {
 
 async function callGeminiAPI(prompt, imageData = null) {
     try {
+        // Detect environment to choose the right endpoint
         let apiEndpoint = '/.netlify/functions/chat';
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port === '5500') {
             apiEndpoint = 'api/ask.php';
         }
 
         const response = await fetch(apiEndpoint, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ 
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
                 prompt: prompt,
-                imageData: imageData // Send the base64 image data
+                imageData: imageData
             })
         });
 
         const data = await response.json();
-        if (!response.ok) throw new Error(data.error || "Failed to get AI response");
 
+        if (!response.ok) {
+            throw new Error(data.error || `HTTP error! status: ${response.status}`);
+        }
+
+        // Handle both direct Gemini API responses and the Netlify/PHP wrapper structure
         if (data.candidates && data.candidates[0].content) {
             return data.candidates[0].content.parts[0].text;
+        } else if (data.text) {
+            return data.text;
         }
-        return "I'm not sure how to respond to that.";
+
+        return "I've processed your request but couldn't generate a text response. Please try again.";
     } catch (error) {
-        console.error("AI Error:", error);
+        console.error("AI Brain Connection Error:", error);
         return `I'm having a little trouble connecting to my AI brain. (Details: ${error.message})`;
     }
 }
 
 function constructPrompt(userQuery) {
-    return `You are "Virtual Euphemia", an AI assistant for Euphemia Chikungulu. 
+    return `You are "Virtual Euphemia", an AI assistant for Euphemia Chikungulu, a Software Engineer.
     Context: ${JSON.stringify(knowledgeBase.profile)}
     Skills: ${JSON.stringify(knowledgeBase.skills)}
     Projects: ${JSON.stringify(knowledgeBase.projects)}
-    Instructions: Be professional, highlight community impact, and keep answers under 4 sentences.
+    Style: Professional, helpful, concise (max 4 sentences). Focus on community impact.
+    
     User Query: ${userQuery}`;
 }
 

@@ -18,7 +18,6 @@ if (!isset($input["prompt"])) {
 $apiKey = getenv("GEMINI_API_KEY");
 
 if (!$apiKey || $apiKey === "YOUR_API_KEY_HERE") {
-    // Check possible config files
     $files = [
         __DIR__ . "/../js/config.js",
         __DIR__ . "/../js/config.example.js"
@@ -43,15 +42,32 @@ if (!$apiKey) {
     exit;
 }
 
-// 2. Prepare the request to Google
+// 2. Prepare the request to Google (v1beta for Gemini 1.5 Flash)
 $prompt = $input["prompt"];
+$parts = [["text" => $prompt]];
+
+// Add image data if provided
+if (isset($input["imageData"]) && !empty($input["imageData"])) {
+    $imgData = $input["imageData"];
+    if (strpos($imgData, ',') !== false) {
+        $base64Data = explode(',', $imgData)[1];
+        $mimePart = explode(':', explode(';', $imgData)[0])[1];
+        
+        $parts[] = [
+            "inline_data" => [
+                "mime_type" => $mimePart,
+                "data" => $base64Data
+            ]
+        ];
+    }
+}
+
 $data = [
     "contents" => [[
-        "parts" => [[ "text" => $prompt ]]
+        "parts" => $parts
     ]]
 ];
 
-// Using Gemini 1.5 Flash for stability (works with most keys)
 $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" . trim($apiKey);
 
 $ch = curl_init($url);
@@ -59,7 +75,7 @@ curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Fix for local XAMPP SSL issues
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Essential for local XAMPP environments
 
 $response = curl_exec($ch);
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -73,4 +89,3 @@ if (curl_errno($ch)) {
 }
 
 curl_close($ch);
-

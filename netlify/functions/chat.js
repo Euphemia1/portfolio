@@ -10,17 +10,16 @@ exports.handler = async (event) => {
             };
         }
 
-        // Always use v1beta for Gemini 1.5 Flash to avoid "Model not found" errors
+        // Use v1beta endpoint for Gemini 1.5 Flash multimodal support
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
-        // Prepare parts: Start with the text prompt
+        // Prepare the contents structure for the Gemini API
         const parts = [{ text: prompt }];
 
-        // If an image is provided, add it to the parts array
         if (imageData) {
-            const base64Data = imageData.split(',')[1]; // Remove the data:image/png;base64, prefix
+            const base64Data = imageData.split(',')[1];
             const mimeType = imageData.split(',')[0].split(':')[1].split(';')[0];
-            
+
             parts.push({
                 inline_data: {
                     mime_type: mimeType,
