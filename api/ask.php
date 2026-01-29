@@ -42,24 +42,22 @@ if (!$apiKey) {
     exit;
 }
 
-// 2. Prepare the request to Google (v1beta for Gemini 3 Flash)
+// 2. Prepare the request to Google (v1beta for Gemini 1.5 Flash)
 $prompt = $input["prompt"];
 $parts = [["text" => $prompt]];
 
-// Add image data if provided
-if (isset($input["imageData"]) && !empty($input["imageData"])) {
+// Add image data if provided (Base64)
+if (isset($input["imageData"]) && !empty($input["imageData"]) && strpos($input["imageData"], 'base64,') !== false) {
     $imgData = $input["imageData"];
-    if (strpos($imgData, ',') !== false) {
-        $base64Data = explode(',', $imgData)[1];
-        $mimePart = explode(':', explode(';', $imgData)[0])[1];
-        
-        $parts[] = [
-            "inline_data" => [
-                "mime_type" => $mimePart,
-                "data" => $base64Data
-            ]
-        ];
-    }
+    $base64Data = explode('base64,', $imgData)[1];
+    $mimePart = explode(':', explode(';', $imgData)[0])[1];
+    
+    $parts[] = [
+        "inline_data" => [
+            "mime_type" => $mimePart,
+            "data" => $base64Data
+        ]
+    ];
 }
 
 $data = [
@@ -68,13 +66,16 @@ $data = [
     ]]
 ];
 
-$url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash:generateContent?key=" . trim($apiKey);
+// Unified URL structure: v1beta and gemini-1.5-flash
+$url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" . trim($apiKey);
 
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+// Fix for local SSL issues (Required for local development)
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
 
 $response = curl_exec($ch);

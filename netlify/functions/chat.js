@@ -6,24 +6,24 @@ exports.handler = async (event) => {
         if (!API_KEY) {
             return {
                 statusCode: 500,
-                body: JSON.stringify({ error: "API Key missing in Netlify environment." })
+                body: JSON.stringify({ error: "API Key missing in Netlify settings." })
             };
         }
 
-        // Use gemini-3-flash for 2026 production stability
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash:generateContent?key=${API_KEY}`;
+        // Using gemini-1.5-flash via v1beta as requested
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
-        // Prepare the contents structure for the Gemini API
+        // Prepare the standard contents structure
         const parts = [{ text: prompt }];
 
-        if (imageData) {
-            const base64Data = imageData.split(',')[1];
-            const mimeType = imageData.split(',')[0].split(':')[1].split(';')[0];
+        if (imageData && imageData.includes('base64,')) {
+            const [header, data] = imageData.split('base64,');
+            const mimeType = header.split(':')[1].split(';')[0];
 
             parts.push({
                 inline_data: {
                     mime_type: mimeType,
-                    data: base64Data
+                    data: data
                 }
             });
         }
@@ -41,7 +41,7 @@ exports.handler = async (event) => {
         if (!response.ok) {
             return {
                 statusCode: response.status,
-                body: JSON.stringify({ error: data.error?.message || "Gemini API Error" })
+                body: JSON.stringify({ error: data.error?.message || "Gemini API Communication Error" })
             };
         }
 
