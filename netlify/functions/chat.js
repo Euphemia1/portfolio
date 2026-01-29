@@ -10,8 +10,8 @@ exports.handler = async (event) => {
             };
         }
 
-        // Use v1beta endpoint for Gemini 1.5 Flash multimodal support
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+        // Use gemini-3-flash for 2026 production stability
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash:generateContent?key=${API_KEY}`;
 
         // Prepare the contents structure for the Gemini API
         const parts = [{ text: prompt }];
