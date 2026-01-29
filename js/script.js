@@ -206,12 +206,47 @@ async function handleSendMessage() {
     const typingId = showTypingIndicator();
 
     try {
-        // Construct the context-aware prompt
+        // If it's a persona selection, we can inject a slightly different persona-aware prompt
         const prompt = constructPrompt(message || "Please describe and analyze this image in the context of your work.");
         const response = await callGeminiAPI(prompt, imageToSend);
 
         removeTypingIndicator(typingId);
         appendMessage(response, 'ai');
+    } catch (error) {
+        removeTypingIndicator(typingId);
+        appendMessage(`Error: ${error.message}`, 'ai');
+    }
+}
+
+// Fixed function to handle Persona Clicks
+async function handlePersonaSelection(persona) {
+    const personaMessages = {
+        'Developer': "I'm a fellow Developer! I'd love to know more about your tech stack and how you approach complex problems.",
+        'Hiring': "I'm looking to hire or collaborate. Could you highlight your most impactful projects and your professional experience?",
+        'Student': "I'm a Student looking for inspiration. Can you tell me about your journey and any advice you have for someone starting out?",
+        'Business': "I have a Business Inquiry. I'm interested in your professional services or potential partnerships."
+    };
+
+    const userMessage = personaMessages[persona];
+    appendMessage(userMessage, 'user');
+
+    const typingId = showTypingIndicator();
+
+    // Add specific context to the prompt for the persona
+    const personaContext = `The user has identified as a ${persona}. Tailor your response and future answers to their specific interests as a ${persona}.`;
+    const prompt = `[CONTEXT: ${personaContext}] ${constructPrompt(userMessage)}`;
+
+    try {
+        const response = await callGeminiAPI(prompt);
+        removeTypingIndicator(typingId);
+        appendMessage(response, 'ai');
+
+        // Hide the persona buttons after selection for a cleaner look
+        const container = document.getElementById('persona-buttons-container');
+        if (container) {
+            container.style.opacity = '0';
+            setTimeout(() => container.remove(), 300);
+        }
     } catch (error) {
         removeTypingIndicator(typingId);
         appendMessage(`Error: ${error.message}`, 'ai');
@@ -276,7 +311,17 @@ function createChatWidgetHTML() {
         <button id="chat-toggle-btn" class="chat-toggle-btn"><i class="fas fa-comment-dots"></i></button>
         <div id="chat-window" class="chat-window hidden">
             <div class="chat-header"><h3>Virtual Euphemia</h3><button id="chat-close-btn">×</button></div>
-            <div id="chat-messages" class="chat-messages"></div>
+            <div id="chat-messages" class="chat-messages">
+                <div class="message ai-message">
+                    <div class="message-content">Hi! I'm Euphemia's AI twin. To give you the best experience, tell me a bit about yourself:</div>
+                </div>
+                <div id="persona-buttons-container" class="persona-buttons-container">
+                    <button class="persona-btn" onclick="handlePersonaSelection('Developer')">I'm a Developer</button>
+                    <button class="persona-btn" onclick="handlePersonaSelection('Hiring')">I'm Looking to Hire</button>
+                    <button class="persona-btn" onclick="handlePersonaSelection('Student')">I'm a Student</button>
+                    <button class="persona-btn" onclick="handlePersonaSelection('Business')">Business Inquiry</button>
+                </div>
+            </div>
             <div class="chat-input-area">
                 <input type="text" id="chat-input" placeholder="Ask me anything...">
                 <button id="chat-image-btn"><i class="fas fa-image"></i></button>
