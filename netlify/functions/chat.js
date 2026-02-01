@@ -10,8 +10,8 @@ exports.handler = async (event) => {
             };
         }
 
-        // Updated to use v1beta with gemini-2.0-flash
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent`;
+        // Using v1beta with gemini-1.5-flash (better free tier support)
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent`;
 
         // Prepare the standard contents structure
         const parts = [{ text: prompt }];
