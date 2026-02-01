@@ -10,8 +10,8 @@ exports.handler = async (event) => {
             };
         }
 
-        // Using stable v1 instead of v1beta to resolve "Model not found" error
-        const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+        // Updated to use v1beta with gemini-2.0-flash
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent`;
 
         // Prepare the standard contents structure
         const parts = [{ text: prompt }];
@@ -30,7 +30,10 @@ exports.handler = async (event) => {
 
         const response = await fetch(API_URL, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json",
+                "X-goog-api-key": API_KEY
+            },
             body: JSON.stringify({
                 contents: [{ parts: parts }]
             })
