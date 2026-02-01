@@ -66,8 +66,8 @@ $data = [
     ]]
 ];
 
-// Using v1beta with gemini-1.5-flash (better free tier support)
-$url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
+// Using v1beta with gemini-2.0-flash as required by API key
+$url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_POST, true);
