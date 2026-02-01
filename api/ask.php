@@ -66,13 +66,16 @@ $data = [
     ]]
 ];
 
-// Unified URL structure: stable v1 and gemini-1.5-flash
-$url = "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=" . trim($apiKey);
+// Updated URL structure: v1beta and gemini-2.0-flash
+$url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    "Content-Type: application/json",
+    "X-goog-api-key: " . trim($apiKey)
+]);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 // Fix for local SSL issues (Required for local development)
