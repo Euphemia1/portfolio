@@ -276,7 +276,13 @@ async function callGeminiAPI(prompt, imageData = null) {
         const data = await response.json();
 
         if (!response.ok) {
-            throw new Error(data.error || `HTTP error! status: ${response.status}`);
+            const friendlyMessages = {
+                AI_BUSY: "I'm getting a lot of questions right now! Please try again in a moment.",
+                AI_UNAVAILABLE: "I'm having trouble connecting to my AI brain right now. Please try again shortly."
+            };
+            const friendly = friendlyMessages[data.error] || friendlyMessages.AI_UNAVAILABLE;
+            console.error("AI Brain Connection Error:", data.error, `(status ${response.status})`);
+            return friendly;
         }
 
         // Handle both direct Gemini API responses and the Netlify/PHP wrapper structure
@@ -289,7 +295,7 @@ async function callGeminiAPI(prompt, imageData = null) {
         return "I've processed your request but couldn't generate a text response. Please try again.";
     } catch (error) {
         console.error("AI Brain Connection Error:", error);
-        return `I'm having a little trouble connecting to my AI brain. (Details: ${error.message})`;
+        return "I'm having trouble connecting to my AI brain right now. Please try again shortly.";
     }
 }
 

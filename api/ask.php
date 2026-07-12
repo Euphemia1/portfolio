@@ -66,30 +66,59 @@ $data = [
     ]]
 ];
 
-// Using v1beta with gemini-2.0-flash as required by API key
-$url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
+// Tried in order; if one model has no quota left, the next is attempted automatically.
+$candidateModels = ["gemini-2.0-flash", "gemini-2.5-flash", "gemini-1.5-flash"];
 
-$ch = curl_init($url);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-    "Content-Type: application/json",
-    "X-goog-api-key: " . trim($apiKey)
-]);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-// Fix for local SSL issues (Required for local development)
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
-
-$response = curl_exec($ch);
-$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-if (curl_errno($ch)) {
-    http_response_code(500);
-    echo json_encode(["error" => "CURL Error: " . curl_error($ch)]);
-} else {
-    http_response_code($httpCode);
-    echo $response;
+function isQuotaOrRateError($httpCode, $responseBody) {
+    if ($httpCode === 429) return true;
+    $decoded = json_decode($responseBody, true);
+    $message = $decoded["error"]["message"] ?? "";
+    return preg_match('/quota|rate.?limit|resource_exhausted/i', $message) === 1;
 }
 
-curl_close($ch);
+foreach ($candidateModels as $model) {
+    $url = "https://generativelanguage.googleapis.com/v1beta/models/{$model}:generateContent";
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        "Content-Type: application/json",
+        "X-goog-api-key: " . trim($apiKey)
+    ]);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    // Fix for local SSL issues (Required for local development)
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+    $response = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        error_log("CURL Error (model: {$model}): " . curl_error($ch));
+        curl_close($ch);
+        http_response_code(500);
+        echo json_encode(["error" => "AI_UNAVAILABLE"]);
+        exit;
+    }
+
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($httpCode >= 200 && $httpCode < 300) {
+        http_response_code($httpCode);
+        echo $response;
+        exit;
+    }
+
+    error_log("Gemini API error (model: {$model}): " . $response);
+
+    if (!isQuotaOrRateError($httpCode, $response)) {
+        http_response_code($httpCode);
+        echo json_encode(["error" => "AI_UNAVAILABLE"]);
+        exit;
+    }
+    // Otherwise fall through and try the next model.
+}
+
+http_response_code(429);
+echo json_encode(["error" => "AI_BUSY"]);

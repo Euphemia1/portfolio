@@ -1,3 +1,11 @@
+// Tried in order; if one model has no quota left, the next is attempted automatically.
+const CANDIDATE_MODELS = ["gemini-2.0-flash", "gemini-2.5-flash", "gemini-1.5-flash"];
+
+function isQuotaOrRateError(status, data) {
+    const message = data?.error?.message || "";
+    return status === 429 || /quota|rate.?limit|resource_exhausted/i.test(message);
+}
+
 exports.handler = async (event) => {
     try {
         const { prompt, imageData } = JSON.parse(event.body);
@@ -9,9 +17,6 @@ exports.handler = async (event) => {
                 body: JSON.stringify({ error: "API Key missing in Netlify settings." })
             };
         }
-
-        // Using v1beta with gemini-2.0-flash as required by API key
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent`;
 
         // Prepare the standard contents structure
         const parts = [{ text: prompt }];
@@ -28,34 +33,52 @@ exports.handler = async (event) => {
             });
         }
 
-        const response = await fetch(API_URL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-goog-api-key": API_KEY
-            },
-            body: JSON.stringify({
-                contents: [{ parts: parts }]
-            })
-        });
+        let lastError = null;
 
-        const data = await response.json();
+        for (const model of CANDIDATE_MODELS) {
+            const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
 
-        if (!response.ok) {
-            return {
-                statusCode: response.status,
-                body: JSON.stringify({ error: data.error?.message || "Gemini API Communication Error" })
-            };
+            const response = await fetch(API_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-goog-api-key": API_KEY
+                },
+                body: JSON.stringify({
+                    contents: [{ parts: parts }]
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                return {
+                    statusCode: 200,
+                    body: JSON.stringify(data)
+                };
+            }
+
+            console.error(`Gemini API error (model: ${model}):`, data.error?.message || data);
+            lastError = data;
+
+            if (!isQuotaOrRateError(response.status, data)) {
+                return {
+                    statusCode: response.status,
+                    body: JSON.stringify({ error: "AI_UNAVAILABLE" })
+                };
+            }
+            // Otherwise fall through and try the next model.
         }
 
         return {
-            statusCode: 200,
-            body: JSON.stringify(data)
+            statusCode: 429,
+            body: JSON.stringify({ error: "AI_BUSY" })
         };
     } catch (error) {
+        console.error("Internal Server Error:", error);
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: "Internal Server Error: " + error.message })
+            body: JSON.stringify({ error: "AI_UNAVAILABLE" })
         };
     }
 };
